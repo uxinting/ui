@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>for tab</title>
+		<style>
+			#tabmenu li {
+				display: inline-block;
+			}
+			
+			#tabcontent div {
+				display: none;
+			}
+			
+			.act {
+				background-color: gray;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			window.onload = function () {
+				var tags = document.getElementById('tabmenu').children;
+				var contents = document.getElementById('tabcontent').children
+				contents[0].style.display = 'block';
+				for (var i = 0; i < tags.length; i++) {
+					tags[i].index = i;
+					tags[i].onclick = function () {
+						for (var j = 0; j < tags.length; j++) {
+							contents[j].style.display = 'none';
+							tags[j].className = '';
+						}
+						tags[this.index].className = 'act';
+						contents[this.index].style.display = 'block';
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div class="tabs">
+			<ul id="tabmenu">
+				<li class="act">
+					<a href="#tab1">1</a>
+				</li>
+				<li>
+					<a href="#tab2">2</a>
+				</li>
+			</ul>
+			<div class="clear"></div>
+			<div id="tabcontent">
+				<div>
+					content one
+				</div>
+				<div>
+					content two
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

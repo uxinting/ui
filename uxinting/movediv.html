@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Move Div</title>
+		<style>
+			body {
+				position: relative;
+			}
+			
+			.main {
+				width: 420px;
+				height: 400px;
+				left: 220px;
+				margin: 30px auto;
+				background-color: black;
+			}
+		</style>
+		<script type="text/javascript" lang="javascript">
+			var intid = 0;
+			var originleft = 0;
+			var pace = -1;
+			
+			function move() {
+				var tar = document.getElementById('tar');
+				var offsetleft = tar.offsetLeft;
+				if (offsetleft <= 3 || offsetleft > originleft) {
+					pace = 0-pace;
+					//clearInterval(intid);
+				}
+				tar.style.position = 'absolute';
+				tar.style.left = (offsetleft + pace) + 'px';
+			}
+			
+			function tomove() {
+				originleft = document.getElementById('tar').offsetLeft;
+				intid = setInterval(move, 2)
+			}
+		</script>
+	</head>
+	<body>
+		<button onclick="tomove()">move</button>
+		<div class="main" id="tar">
+		</div>
+	</body>
+</html>
