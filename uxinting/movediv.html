@@ -3,16 +3,39 @@
 	<head>
 		<title>Move Div</title>
 		<style>
-			body {
-				position: relative;
-			}
-			
 			.main {
+				z-index: 1
 				width: 420px;
 				height: 400px;
 				left: 220px;
 				margin: 30px auto;
 				background-color: black;
+			}
+			
+			.modal {
+				position: absolute;
+				top: 0%;
+				left: 0%;
+				display: none;
+				float: left;
+				width: 100%;
+				height: 100%;
+				z-index: 1;
+				opacity: .30;
+				background-color: blue;
+			}
+			
+			#logindiv {
+				position: absolute;
+				top: 200px;
+				left: 400px;
+				width: 400px;
+				height: 250px;
+				display: none;
+				background-color: red;
+				z-index: 2;
+				text-align: center;
+				overflow: auto;
 			}
 		</style>
 		<script type="text/javascript" lang="javascript">
@@ -32,14 +55,46 @@
 			}
 			
 			function tomove() {
-				originleft = document.getElementById('tar').offsetLeft;
-				intid = setInterval(move, 2)
+				//originleft = document.getElementById('tar').offsetLeft;
+				//intid = setInterval(move, 2)
+			}
+			
+			function show() {
+				var bg = document.getElementById('fade');
+				var ld = document.getElementById('logindiv');
+				bg.style.display = 'block';
+				ld.style.display = 'block';
+			}
+			
+			function hide() {
+				var bg = document.getElementById('fade');
+				var ld = document.getElementById('logindiv');
+				bg.style.display = 'none';
+				ld.style.display = 'none';
 			}
 		</script>
 	</head>
 	<body>
-		<button onclick="tomove()">move</button>
-		<div class="main" id="tar">
+		<div class="main">
+			<p> h</p>
+			<p> h</p>
+			<p> h</p>
+			<p> h</p>
+			<p> h</p><p> h</p>var
+			<p> h</p>
+			<p> h</p>
+			<p> h</p>
+			<p> h</p>
+			<p> h</p><p> h</p>
+			<p> h</p>
+			<p> h</p>
 		</div>
+		<div name="n">hello</div>
+		<div id="logindiv">
+			<button onclick="hide()">hid</button>
+		</div>
+		<div id="fade" class="modal">
+		</div>
+		<button onclick="show()">show</button>
 	</body>
 </html>
