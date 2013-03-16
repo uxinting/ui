@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>z-index</title>
+		<style>
+			.down {
+				position: absolute;
+				width: 100px;
+				height: 100px;
+				z-index: 2;
+				background-color: red;
+			}
+			
+			.up {
+				position: absolute;
+				top: 0;
+				width: 90px;
+				height: 90px;
+				z-index: 4;
+				background-color: blue;
+			}
+		</style>
+		<script>
+			function once(fn){ 
+			   return function(){ 
+				 try{ 
+					fn.apply(this, arguments); 
+				 }catch(ex){ 
+					alert("'this function can only called by once.'");   
+				}finally{ 
+					fn = null; 
+				} 
+			   } 
+			}
+			var g = once(function(x) {
+				alert(x)
+				})
+			g(1)
+			g(2)
+		</script>
+	</head>
+	<body>
+		<div class="up">
+		</div>
+		<div class="down">
+		</div>
+		
+		
+	</body>
+</html>

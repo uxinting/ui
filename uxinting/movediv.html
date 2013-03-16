@@ -3,9 +3,11 @@
 	<head>
 		<title>Move Div</title>
 		<style>
+			.box {
+				position: relative;
+			}
 			.main {
-				z-index: 1
-				width: 420px;
+				width: 220px;
 				height: 400px;
 				left: 220px;
 				margin: 30px auto;
@@ -48,15 +50,15 @@
 				var offsetleft = tar.offsetLeft;
 				if (offsetleft <= 3 || offsetleft > originleft) {
 					pace = 0-pace;
-					//clearInterval(intid);
+					clearInterval(intid);
 				}
 				tar.style.position = 'absolute';
-				tar.style.left = (offsetleft + pace) + 'px';
+				tar.style.left = (20) + 'px';
 			}
 			
 			function tomove() {
-				//originleft = document.getElementById('tar').offsetLeft;
-				//intid = setInterval(move, 2)
+				originleft = document.getElementById('tar').offsetLeft;
+				intid = setInterval(move, 2)
 			}
 			
 			function show() {
@@ -75,26 +77,16 @@
 		</script>
 	</head>
 	<body>
-		<div class="main">
-			<p> h</p>
-			<p> h</p>
-			<p> h</p>
-			<p> h</p>
-			<p> h</p><p> h</p>var
-			<p> h</p>
-			<p> h</p>
-			<p> h</p>
-			<p> h</p>
-			<p> h</p><p> h</p>
-			<p> h</p>
-			<p> h</p>
+		<div class="box">
+		<div class="main" id="tar">
 		</div>
+		</div><!--
 		<div name="n">hello</div>
 		<div id="logindiv">
 			<button onclick="hide()">hid</button>
 		</div>
 		<div id="fade" class="modal">
-		</div>
-		<button onclick="show()">show</button>
+		</div>-->
+		<button onclick="move()">move</button>
 	</body>
 </html>
