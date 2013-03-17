@@ -54,7 +54,7 @@ body {
 .iconmenu li {
 	display: inline-block;
 	line-height: 30px;
-	margin-right: 15px;
+	padding-right: 15px;
 }
 
 #icon-msg {
