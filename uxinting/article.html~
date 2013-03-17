@@ -9,8 +9,8 @@
 		<script src="./tab.js"></script>
 	</head>
 	<body>
-		<div class="header">
-		<div class="header-container">
+		<div class="header"><!--
+		<div class="header-container">-->
 			<div class="logo">
 				<img src="./img/logo.png">
 			</div>
@@ -41,8 +41,8 @@
 						</li>
 					</ul>
 				</div> 
-			</div>
-			</div>
+			</div><!--
+			</div>-->
 		</div>
 		<div class="clear"></div>
 		<div class="main">

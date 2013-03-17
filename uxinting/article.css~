@@ -39,7 +39,7 @@
 }
 
 .btn:hover {
-	color: rgb(50, 50, 50);
+	color: black;
 	background: #99ccff;
 	opacity: 0.8;
 }
