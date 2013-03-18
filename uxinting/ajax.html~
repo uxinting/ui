@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Ajax First Example</title>
+	</head>
+	<body>
+		<span id="menuhere">
+			<div>1</div>
+		</span>
+		<button onclick="getDocument()">ajax</button>
+		
+		<script type="text/javascript">
+			var xHRObject = false;
+			
+			if (window.XMLHttpRequest) {
+				xHRObject = new XMLHttpRequest();
+			} else if (window.ActiveXObject) {
+				xHRObject = new ActiveXObject("Microsoft.XMLHTTP")
+			}
+			
+			function getData() {
+				if (xHRObject.readyState == 4) {
+					var doc = xHRObject.responseText;
+					var span = document.getElementById('menuhere')
+					if (span != null) {
+						var node = document.createElement('ul')
+						node.style.className = 'grid-show'
+						node.innerHTML = doc
+						span.appendChild(node)
+					}
+				}
+			}
+			
+			function getDocument() {
+				//Reset the function
+				xHRObject.onreadystatechange = getData;
+				
+				xHRObject.open("GET", "doc.xml?id=" + Number(new Date), true);
+				
+				xHRObject.send(null);
+			}
+		</script>
+	</body>
+</html>
