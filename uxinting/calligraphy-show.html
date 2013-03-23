@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Calligraphy-show</title>
+		<link rel="stylesheet" href="base.css"/>
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+				font-size: 0;
+			}
+
+			#pic-container {
+				width: 80%;
+				min-width: 900px;
+				height: 800px;
+				margin: 0 auto;
+				position: relative;
+			}
+
+			.pic-prev {
+				position: absolute;
+				display: block;
+				height: 800px;
+				width: 20%;
+				min-width: 100px;
+				top: 0;
+				left: 0;
+			}
+
+			.pic-prev a:hover {
+				cursor: w-resize;
+				background-color: rgb(220, 220, 220);
+			}
+
+			.pic-next {
+				position: absolute;
+				display: block;
+				height: 800px;
+				width: 20%;
+				min-width: 100px;
+				right: 0;
+				top: 0;
+			}
+
+			.pic-next a:hover {
+				cursor: e-resize;
+				background-color: rgb(220, 220, 220);
+			}
+
+			.pic-prev a,
+			.pic-next a {
+				display: block;
+				width: 100%;
+				height: 100%;
+			}
+
+			.pic-desc {
+				display: block;
+				position: absolute;
+				height: auto;
+				min-height: 100px;
+				width: 100%;
+				bottom: 0;
+				color: white;
+				opacity: 0.0;
+				z-index: 1;
+				font-size: 16px;
+				text-indent: 2em;
+				background: transparent;
+			}
+
+			.pic-desc:hover {
+				opacity: 1;
+			}
+
+			#pic-container a {
+				display: block;
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 140px;
+				height: 40px;
+				line-height: 40px;
+				font-size: 16px;
+				text-decoration: none;
+				text-align: center;
+				overflow: hidden;
+			}
+
+			#pic-container a:hover {
+				color: rgb(40, 40, 40);
+				font-size: 18px;
+			}
+
+			img {
+				max-width: 100%;
+				max-height: 100%;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="pic-prev">
+			<a href=""></a>
+		</div>
+		<div class="pic-next">
+			<a href=""></a>
+		</div>
+		<div id="pic-container">
+			<img id="pic" src="./img/1.jpg"/>
+			<a class="back" href="/calligraphys">back</a>
+			<div class="pic-desc">
+				Here is some description about the picture
+			</div>
+		</div>
+		<script type="text/javascript">
+			var img = document.getElementById('pic')
+			var container = document.getElementById('pic-container')
+			img.style.position = 'absolute'
+			if (img.width < container.offsetWidth) {
+				img.style.left = (container.offsetWidth - img.width) / 2 + 'px'
+			}
+			if (img.height < container.offsetHeight) {
+				img.style.top = (container.offsetHeight - img.height) /2 + 'px'
+			}
+		</script>
+	</body>
+</html>
