@@ -11,109 +11,103 @@
 			#fade {
 				display: block;
 				position: absolute;
+				top: 0;
+				left: 0;
 				margin: 0;
 				width: 100%;
 				height: 100%;
-				background-color: #cccccc;
+				min-width: 1200px;
+				min-height: 900px;
+				background-color: black;
 				z-index: 1;
-				opacity: 0.4;
+				opacity: 0.8;
 			}
 
-			#modal {
+			#dialog {
 				display: block;
 				position: absolute;
-				margin: 200px 400px;
+				top: 0;
+				left: 0;
+				margin: 130px 400px;
 				width: 400px;
-				background-color: white;
+				background-color: transparent;
+				color: rgb(251, 251, 251);
 				z-index: 2;
 			}
 
 			.modalhead {
 				display: block;
 				position: relative;
-				margin: 0;
+				margin: 5px 0;
 				padding: 0;
+				width: 100%;
+				height: 100px;
 			}
-
-			h3 {
-				margin: 5px 5px;
-			}
-
-			.btnclose,
-			.btnclose:visited {
-				text-decoration: none;
-				color: #cccccc;
+			
+			#icon-close {
+				display: block;
 				float: right;
-				background-color: transparent;
+				font-size: 14px;
+				width: 14px;
+				height: 15px;
+				background-image: url('./img/glyphicons-halflings-white.png');
+				background-position: -312px 0px;
 			}
-
-			.btnclose:hover {
-				color: #999999;
+			
+			#icon-close:hover {
+				background-image: url('./img/glyphicons-halflings.png');
 			}
 
 			.modalcontent {
 				display: block;
-				margin: 0 5px;
-				padding: 0;
 			}
 
 			.modalcontent input {
-				width: 250px;
+				width: 100%;
+				height: 22px;
+				border: 1px black solid;
 			}
 
 			.modallabel {
-				display: inline-block;
-				width: 100px;
-				margin: 0 5px 0 0;
-				padding: 0;
+				display: block;
+				margin: 5px 0;
 			}
 
 			.modalfooter {
 				display: block;
-				text-align: right;
-				margin: 0 5px;
-				padding-top: 10px;
-				border-top: 1px #663366 solid;
+				text-align: left;
+				padding-top: 20px;
+				border-top: 1px rgb(151, 151,151) solid;
 			}
 
-			.btnsubmit {
-				border: 1px white solid;
-				background: #99ccff;
+			#btnsubmit {
+				width: 80px;
+				height: 30px;
+				border: none;
+				border-radius: 8px;
+				background-repeat: no-repeat;
 			}
 
-			.btnsubmit:hover {
-				border: 1px black solid;
-				background: #0099ff;
+			#btnsubmit:hover {
+				background: rgb(0, 210, 0);
 			}
 
-			.btnreset {
-				border: 1px white solid;
-				background: transparent;
-			}
-
-			.btnreset:hover {
-				border: 1px black solid;
-				background: #cccccc;
-			}
 		</style>
 	</head>
 	<body>
 		<div id="fade">
 		</div>
-		<div class="dialog" id="modal">
+		<div id="dialog">
 			<div class="modalhead">
 				<h3>
-					Login
-					<a class="btnclose" href="">x</a>
+					<a id="icon-close"></a>
 				</h3>
 			</div>
 			<div class="modalcontent">
-			<p> 
 					<div class="modallabel">
 						username:
 					</div>
 					<input type="text"/>
-				</p>
 				<p>
 					<div class="modallabel">
 						password:
@@ -121,9 +115,9 @@
 					<input type="text"/>
 				</p>
 			</div>
+			<input type="checkbox" value="Remeber me">Remeber me</input>
 			<div class="modalfooter">
-				<input type="submit" class="btnsubmit"/>
-				<input type="reset" class="btnreset"/>
+				<input type="submit" id="btnsubmit"/>
 			</div>
 		</div>
 		<button onclick="logoin"></button>

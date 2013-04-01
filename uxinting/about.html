@@ -13,9 +13,15 @@
 			.about-container {
 				width: 100%;
 				min-width: 1200px;
-				height: 800px;
-				background: url('./img/inception.jpg') no-repeat;
-				background-color: blue;
+				height: 780px;
+			}
+
+			.about-container > img {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
 			}
 
 			#about-info {
@@ -78,6 +84,7 @@
 	</head>
 	<body>
 		<div class="about-container">
+			<img src="./img/inception.jpg"/>
 			<div id="about-info">
 				<a id="icon-right" class="about-trigger" href="javascript: onRight()"></a>
 				<a id="icon-left" class="about-trigger" href="javascript: onLeft()"></a>
