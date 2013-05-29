@@ -1,0 +1,23 @@
+body {
+	color: rgb(71, 72, 74);
+	background: rgb(241, 241, 241);
+	font-family: 微软雅黑, Verdana, sans-serif, 宋体;
+}
+
+.icon-backtop {
+	position: fixed;
+	width: 48px;
+	height: 48px;
+	diplay: block;
+	right: 20px;
+	bottom: 20px;
+	background: url(../img/backtop.png) 0 0 no-repeat;
+}
+
+.a:hover {
+	cursor: pointer;
+}
+
+.well p:hover {
+	
+}
