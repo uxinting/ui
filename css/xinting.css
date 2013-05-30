@@ -4,8 +4,47 @@ body {
 	font-family: 微软雅黑, Verdana, sans-serif, 宋体;
 }
 
+.article {
+	margin: 0 auto;
+	width: 80%;
+}
+
+.article h1, h2, h3, h4, h5, h6 {
+	margin-bottom: 20px;
+	padding-left: 8px;
+	border-width: 0 0 1px 0;
+	border-solid: 1px;
+	border-color: rgb(159, 159, 159);
+}
+
+.article p {
+	font-size: 15px;
+	word-spacing: 5px;
+	letter-spacing: 1px;
+	line-height: 25px;
+	margin: 0;
+	padding: 20px 8px;
+}
+
+.article highlight:hover {
+	background-color: rgb(241, 241, 241);
+	color: rgb(88, 88, 88);
+	border-radius: 5px;
+	box-shadow: 1px 1px 2px rgb(88, 88, 88);
+}
+
+.article-list li {
+	display: block;
+	padding: 5px 25px 30px;
+	margin-bottom: 15px;
+	border-width: 0 0 1px 0;
+	border-style: solid;
+	border-color: rgb(159, 159, 159);
+}
+
 .icon-backtop {
 	position: fixed;
+	display: none;
 	width: 48px;
 	height: 48px;
 	diplay: block;
@@ -16,8 +55,4 @@ body {
 
 .a:hover {
 	cursor: pointer;
-}
-
-.well p:hover {
-	
 }

@@ -20,5 +20,16 @@
 		});
 		
 		//tag p highlight
+		$(document).mousemove(function(e) {
+			var y = e.pageY;
+			var ps = $('.article').find('p');
+			for (var i = 0; i < ps.length; i++) {
+				if (y > ps[i].offsetTop && y < ps[i].offsetTop + ps[i].clientHeight) {
+					$(ps[i]).addClass('highlight');
+				} else {
+					$(ps[i]).removeClass('highlight');
+				}
+			}
+		});
 	});
 }(window.jQuery);
