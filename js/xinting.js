@@ -21,11 +21,15 @@
 		
 		//tag p highlight
 		$(document).mousemove(function(e) {
+			var yy = e.clientY;
 			var y = e.pageY;
+			if ($('.article').data('highlight') != true) return;
+			
 			var ps = $('.article').find('p');
 			for (var i = 0; i < ps.length; i++) {
-				if (y > ps[i].offsetTop && y < ps[i].offsetTop + ps[i].clientHeight) {
-					$(ps[i]).addClass('highlight');
+				var ot = ps[i].offsetTop;
+				if (y > ot && y < ot + ps[i].clientHeight) {
+					$(ps[i]).addClass('highlight').css('background-position', '0px ' + yy + 'px');
 				} else {
 					$(ps[i]).removeClass('highlight');
 				}
