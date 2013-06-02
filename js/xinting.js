@@ -19,21 +19,35 @@
 			}
 		});
 		
-		//tag p highlight
+		//prev button
+		$('.icon-prev').click(function() {
+			
+		});
+		
+		//next button
+		$('.icon-next').click(function() {
+		
+		});
+		
+		//data-toggle
+		$('[data-toggle="tooltip"]').mouseover(function() {
+			$(this).tooltip('show');
+		});
+		
+		//highlight
 		$(document).mousemove(function(e) {
 			var yy = e.clientY;
 			var y = e.pageY;
 			if ($('.article').data('highlight') != true) return;
 			
-			var ps = $('.article').find('p');
-			for (var i = 0; i < ps.length; i++) {
-				var ot = ps[i].offsetTop;
-				if (y > ot && y < ot + ps[i].clientHeight) {
-					$(ps[i]).addClass('highlight').css('background-position', '0px ' + yy + 'px');
-				} else {
-					$(ps[i]).removeClass('highlight');
-				}
+			var article = $('.article');
+			var ot = article.offset().top;
+			if (y > ot && y < ot + article.height()) {
+				article.addClass('highlight').css('background-position', '0px ' + yy + 'px');
+			} else {
+				article.removeClass('highlight');
 			}
 		});
+		
 	});
 }(window.jQuery);
