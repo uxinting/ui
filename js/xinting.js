@@ -126,7 +126,7 @@
 		
 		//form submit check
 		$('form').submit(function() {
-			if($('#noError').val() == 'false') {
+			if($('#noError').val() == false) {
 				return false;
 			}
 		});
