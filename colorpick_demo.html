@@ -1,0 +1,25 @@
+<html>
+<head>
+	<title>Canvas</title>
+</head>
+<body>
+	<div id="cp"></div>
+	<div id="show">
+	</div>
+	<!-- js -->
+	<script src="./js/colorpick.min.js"></script>
+	<script>
+	new colorPicker({
+		id: 'cp',
+		onmousemove: function(c){
+			var s = document.getElementById('show')
+			s.innerHTML = c;
+			s.style.background = c;
+		},
+		onclick: function(c) {
+			document.getElementById('show').style.background = c;
+		}
+	});
+	</script>
+</body>
+</html>
