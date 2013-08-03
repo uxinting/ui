@@ -24,17 +24,23 @@ function colorPicker(options) {
 	ele.onmouseleave = mouseleave;
 	
 	function mousemove(e) {
-		var rs = updateColor(e);
+		var rs = getColor(e);
 		if (options.onmousemove) {
 			options.onmousemove(rgb(rs['red'], rs['green'], rs['blue']));
 		}
 	};
 	
 	function click(e) {
-		var rs = updateColor(e);
+		var rs = getColor(e);
 		red = rs['red']
 		green = rs['green']
 		blue = rs['blue']
+				
+		var r = document.getElementById('canvas_r');
+		r.style.top = red - red%5;
+		var gb = document.getElementById('canvas_gb');
+		gb.style.left = green - green%5;
+		gb.style.top = blue - blue%5;
 		
 		if (options.onclick) {
 			options.onclick(rgb(red, green, blue));
@@ -54,7 +60,7 @@ function colorPicker(options) {
 		}
 	};
 	
-	function updateColor(e) {
+	function getColor(e) {
 		var eRect = ele.getBoundingClientRect();
 		var x = e.clientX - eRect.left;
 		var y = e.clientY - eRect.top;
@@ -66,18 +72,13 @@ function colorPicker(options) {
 		
 		//red
 		if (x >= 260) {
-			var r = document.getElementById('canvas_r');
 			rs['red'] = y;
-			r.style.top = y - y%5;
 		} else if (x > 255) {
 			mouseleave(e);
 		}
 		
 		//green and blue
 		if ( x <= 250) {
-			var gb = document.getElementById('canvas_gb');
-			gb.style.left = x - x%5;
-			gb.style.top = y - y%5;
 			rs['green'] = x;
 			rs['blue'] = y;
 		}

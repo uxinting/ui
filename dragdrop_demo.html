@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Drag and Drop</title>
+	
+	<style>
+	.article {
+		width: 400px;
+		height: 400px;
+		margin: 0 auto;
+		background: gray;
+	}
+	
+	.article > p {
+		height: 200px;
+		width: 100%;
+	}
+	
+	.key {
+		width: 20px;
+		height: 20px;
+		background: black;
+	}
+	</style>
+</head>
+<body>	
+	<div class="key" id="key" ></div>
+	<div class="article">
+		<p style="background: #ff0000"></p>
+		<p style="background: #00ff00"></p>
+		<p style="background: #0000ff"></p>
+	</div>
+	
+	<script src="./js/jquery-1.9.1.js"></script>
+	<script src="./js/dragndrop.js"></script>
+	<script>
+	var k = new key({
+		id: 'key', 
+		ts: '.article p',
+		msg: 'msg',
+		drag: function(ev) {
+			
+		},
+		drop: function(ev) {
+			alert(ev.dataTransfer.getData('msg') + ' ' + ev.target.style.backgroundColor);
+		}
+	});
+	</script>
+</body>
+</html>
