@@ -1,7 +1,7 @@
 function key(options) {
 	this.id = options.id;
 	this.ts = options.ts;
-	var msg = options.msg;
+	var msg = options.data;
 		
 	var e = document.getElementById(this.id);
 	if (!e) {
@@ -39,6 +39,10 @@ function key(options) {
 	}
 	
 	function allowDrop(ev) {
-		ev.preventDefault();
+		if (options.allowDrop) {
+			if (options.allowDrop(ev)) {
+				ev.preventDefault();
+			}
+		}
 	}
 }

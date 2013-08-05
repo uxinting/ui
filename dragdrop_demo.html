@@ -32,17 +32,20 @@
 	</div>
 	
 	<script src="./js/jquery-1.9.1.js"></script>
-	<script src="./js/dragndrop.js"></script>
+	<script src="./js/dragdrop.js"></script>
 	<script>
 	var k = new key({
 		id: 'key', 
 		ts: '.article p',
-		msg: 'msg',
+		data: 'msg',
 		drag: function(ev) {
 			
 		},
 		drop: function(ev) {
 			alert(ev.dataTransfer.getData('msg') + ' ' + ev.target.style.backgroundColor);
+		},
+		allowDrop: function(ev) {
+			return true;
 		}
 	});
 	</script>
