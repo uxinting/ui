@@ -80,16 +80,14 @@ function highLight(options) {
 		var y = ev.pageY;
 		var ot = $(this).offset().top;
 		
-		if (y + parseInt(_this.height) - ot > $(this).height()) return;
-		
-		if ($('#'+id).data('highlight') != true) {
+		if ($('#'+id).data('highlight').toLowerCase() != 'true') {
 			$(_this.stage).hide();
 			return;
 		} else {
 			$(_this.stage).show();
 		}
 		
-		$(_this.stage).css({'top': y - ot +'px'});
+		$(_this.stage).css({'top': y - ot - parseInt(_this.height)/2 +'px'});
 	});
 	
 	function rgb(r, g, b) {

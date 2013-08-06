@@ -23,11 +23,13 @@ function key(options) {
 			var e = tss[len];
 			e.ondragover = allowDrop;
 			e.ondrop = drop;
+			e.ondragleave = dragleave;
+			e.ondragenter = dragenter;
 		}
 	}
 	
 	function dragstart(ev) {
-		ev.dataTransfer.setData('msg', msg);
+		ev.dataTransfer.setData('data', msg);
 		if (options.drag)
 			options.drag(ev);
 	}
@@ -43,6 +45,20 @@ function key(options) {
 			if (options.allowDrop(ev)) {
 				ev.preventDefault();
 			}
+		} else {
+			ev.preventDefault();
+		}
+	}
+	
+	function dragenter(ev) {
+		if (options.dragenter) {
+			options.dragenter(ev);
+		}
+	}
+	
+	function dragleave(ev) {
+		if (options.dragleave) {
+			options.dragleave(ev);
 		}
 	}
 }
