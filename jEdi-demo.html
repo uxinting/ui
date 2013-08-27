@@ -1,0 +1,24 @@
+<html>
+<head>
+	<title>Page Title</title>
+	<style>
+	#editor { width:640px; height:380px; border:1px solid #000; }
+	</style>
+</head>
+<body>
+
+<div id="editor">
+	<p>Hello jedi</p>
+</div>
+<script src="js/jquery-1.9.1.js"></script>
+<script src="js/jquery-ui-1.10.3.custom.js"></script>
+<script src="js/jEdi.js"></script>
+<script>
+$(document).ready(function() {
+	$('#editor').jEdi({
+		'editorCSS': 'css/jedi-demo.css'
+	});
+});
+</script>
+</body>
+</html>
