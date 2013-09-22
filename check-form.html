@@ -1,0 +1,75 @@
+<html>
+<head>
+	<title>Page Title</title>
+	<meta charset="utf8" />
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+	<link rel="stylesheet" href="bootstrap3/css/bootstrap.css" />
+	<style>
+	.v-center-bg {
+		position: relative;
+		top: 180px;
+		width: 100%;
+		height: 300px;
+		border-style: solid;
+		border-width: 1px 0;
+		border-color: rgb( 209, 209, 209 );
+		background: rgb( 232, 232, 232);
+	}
+	
+	form {
+		width: 300px;
+		margin-top: 25px;
+		margin-left: 50%;
+	}
+	
+	img {
+		position: absolute;
+		left: 150px;
+		top: -60px;
+	}
+	</style>
+</head>
+
+<body>
+
+<div class="v-center-bg">
+	<form role="form">
+		<img src="img/book-logo.png" />
+		<div class="form-group">
+			<label>邮箱</label>
+			<input type="email" class="form-control" placeholder="Enter email" data-check="email"/>
+			<p class="help-block"></p>
+		</div>
+		
+		<div class="form-group">
+			<label>密码</label>
+			<input type="password" class="form-control" placeholder="Enter password" data-check="passwd"/>
+			<p class="help-block"></p>
+		</div>
+		
+		<button type="submit" class="btn btn-default">确定</button>
+	</form>
+</div>
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script src="bootstrap3/js/bootstrap.js" ></script>
+<script src="js/check-form.js"></script>
+<script>
+$(function(){
+	$('form').checkform({
+		error: function (el, msg) {
+			el.parent('div').addClass('has-error');
+			el.next().text( msg );
+		},
+		
+		success: function (el) {
+			el.parent('div').removeClass('has-error');
+			el.next().text('');
+		}
+	});
+})
+</script>
+
+</body>
+</html>
