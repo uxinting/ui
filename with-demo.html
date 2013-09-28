@@ -1,0 +1,31 @@
+<html>
+<head>
+</head>
+<body>
+	
+	<p data-with="text: name; val: value"></p>
+	<ul data-with="contain: books">
+		<example>
+			<li ><p data-with="text"></p></li>
+		</example>
+	</ul>
+	
+	<script>
+	result = {
+		data: {
+			name: 'wuxinting',
+			value: 'hotmail',
+			books: [ 
+				'wu',
+				'xin'
+			]
+		}
+	}
+	</script>
+	<script src="js/jquery-1.9.1.js"></script>
+	<script src="js/with.js"></script>
+	<script>
+	fillDocument( result );
+	</script>
+</body>
+</html>

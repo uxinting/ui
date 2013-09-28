@@ -5,6 +5,11 @@
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 	<link rel="stylesheet" href="bootstrap3/css/bootstrap.css" />
 	<style>
+	body {
+		font-family: 微软雅黑;
+		font-size: 14px;
+		min-width: 1000px;
+	}
 	.navbar .glyphicon {
 		padding-top: 2px;
 	}
@@ -13,25 +18,34 @@
 		position: absolute;
 		top: 8;
 		right: 5;
-		color: brown;
+		color: #ceab65;
 		font-size: 10px;
-	}
-	
-	.tab-pane > .row {
-		margin-bottom: 20px;
 	}
 	
 	.book {
 		position: relative;
 		width: 100%;
+		padding-top: 40px;
 		height: 200px;
 		background: rgb( 232, 232, 232);
 	}
 	
-	.book > p {
-		position: absolute;
-		top: 120px;
-		width: 100%;
+	.book-name {
+		color: #888888;
+		font-size: 20px;
+		text-align: center;
+	}
+	
+	.author-name {
+		color: rgb(162, 159, 160);
+		padding-right: 10px;
+		text-align: right;
+	}
+	
+	.book-press {
+		position: relative;
+		top: 70px;
+		color: rgb( 209, 209, 209 );
 		text-align: center;
 	}
 	
@@ -59,6 +73,34 @@
 		cursor: pointer;
 		color: blue;
 	}
+	
+	.nav-pills > li.active > a,
+	.nav-pills > li.active > a:hover,
+	.nav-pills > li.active > a:focus {
+		text-shadow: 0 1px 0 #ffffff;
+		//color: #428bca;
+		//color: #bb9854;
+		color: #666666;
+		border-width: 1px 0 0 0;
+		box-shadow: none;
+		//background-color: #fafafa;
+		//background-color: #c9c9c9;
+		//background-color: rgb( 232, 232, 232);
+		background-color: #ceab65;
+	}
+	
+	.nav-pills > li > a {
+		border-radius: 0;
+		text-align: center;
+		border-style: solid;
+		border-width: 1px 0 0 0;
+		border-color: #dddddd;
+		color: #888888;
+	}
+	
+	.thumbnail {
+		margin-bottom: 10px;
+	}
 	</style>
 </head>
 
@@ -67,17 +109,20 @@
 	<div class="navbar-header">
 		<a class="navbar-brand" href="#">Book Drift</a>
 	</div>
-	<ul class="nav navbar-nav pull-right">
+	<ul class="nav navbar-nav">
+		<li><a href="#add-tag" data-toggle="modal" title="添加新的标签"><span class="glyphicon glyphicon-tag"></span></a></li>
+		<li><a href="#add-book" data-toggle="modal" title="分享新的书籍"><span class="glyphicon glyphicon-book"></span></a></li>
+	</ul>
+	<ul class="nav navbar-nav navbar-right">
 		<li><a href="#"><span class="glyphicon glyphicon-envelope"></span><strong class="icon-badge">1</strong></a></li>
 		<li><a href="#">xinting</a></li>
 	</ul>
-</nav
+</nav>
 <div class="row">
 	<div class="col-lg-3">
-		<ul class="nav nav-pills nav-stacked nav-tabs">
-			<li class="active"><a href="#tab1" data-toggle="tab">我</a></li>
-			<li><a href="#tab2" data-toggle="tab">实验室</a></li>
-			<li><a href="#tab3" data-toggle="tab">寝室</a></li>
+		<ul class="nav nav-tabs nav-pills nav-stacked" data-with="contain: tags" id="tags">
+			<li class="active"><a href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-hand-right" style="color: black; float: left;"></span>我</a></li>
+			<example><li><a href="#tab2" data-toggle="tab" data-with="text"></a></li></example>
 		</ul>
 		<button type="button" class="btn btn-lg" style="margin-top: 20px; width: 100%;" id="trash">
 			<span class="glyphicon glyphicon-trash"></span>
@@ -86,12 +131,16 @@
 	<div class="col-lg-9">
 		<div class="tab-content">
 			<div class="tab-pane active" id="tab1">
-				<div class="row">
+				
+				<div class="row" data-with="contain: books">
+				<example>
 					<div class="col-lg-3">
 						<div href="#" class="thumbnail">
 							<div class="book">
 								<span class="glyphicon glyphicon-ok-sign"></span>
-								<p>Book For Coder</p>
+								<p class="book-name" data-with="text: bookName"></p>
+								<p class="author-name" data-with="text: authorName"></p>
+								<p class="book-press" data-with="text: bookPress"></p>
 								<ul class="status">
 									<li><span class="glyphicon glyphicon-ok"></span></li>
 									<li><span class="glyphicon glyphicon-minus"></span></li>
@@ -100,99 +149,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-3">
-						<div href="#" class="thumbnail">
-							<div class="book">
-								<span class="glyphicon glyphicon-ok-sign"></span>
-								<p>Book For Coder</p>
-								<ul class="status">
-									<li><span class="glyphicon glyphicon-ok"></span></li>
-									<li><span class="glyphicon glyphicon-minus"></span></li>
-									<li><span class="glyphicon glyphicon-remove"></span></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3">
-						<div href="#" class="thumbnail">
-							<div class="book">
-								<span class="glyphicon glyphicon-ok-sign"></span>
-								<p>Book For Coder</p>
-								<ul class="status">
-									<li><span class="glyphicon glyphicon-ok"></span></li>
-									<li><span class="glyphicon glyphicon-minus"></span></li>
-									<li><span class="glyphicon glyphicon-remove"></span></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3">
-						<div href="#" class="thumbnail">
-							<div class="book">
-								<span class="glyphicon glyphicon-ok-sign"></span>
-								<p>Book For Coder</p>
-								<ul class="status">
-									<li><span class="glyphicon glyphicon-ok"></span></li>
-									<li><span class="glyphicon glyphicon-minus"></span></li>
-									<li><span class="glyphicon glyphicon-remove"></span></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-3">
-						<div href="#" class="thumbnail">
-							<div class="book">
-								<span class="glyphicon glyphicon-ok-sign"></span>
-								<p>Book For Coder</p>
-								<ul class="status">
-									<li><span class="glyphicon glyphicon-ok"></span></li>
-									<li><span class="glyphicon glyphicon-minus"></span></li>
-									<li><span class="glyphicon glyphicon-remove"></span></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3">
-						<div href="#" class="thumbnail">
-							<div class="book">
-								<span class="glyphicon glyphicon-ok-sign"></span>
-								<p>Book For Coder</p>
-								<ul class="status">
-									<li><span class="glyphicon glyphicon-ok"></span></li>
-									<li><span class="glyphicon glyphicon-minus"></span></li>
-									<li><span class="glyphicon glyphicon-remove"></span></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3">
-						<div href="#" class="thumbnail">
-							<div class="book">
-								<span class="glyphicon glyphicon-ok-sign"></span>
-								<p>Book For Coder</p>
-								<ul class="status">
-									<li><span class="glyphicon glyphicon-ok"></span></li>
-									<li><span class="glyphicon glyphicon-minus"></span></li>
-									<li><span class="glyphicon glyphicon-remove"></span></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3">
-						<div href="#" class="thumbnail">
-							<div class="book">
-								<span class="glyphicon glyphicon-ok-sign"></span>
-								<p>Book For Coder</p>
-								<ul class="status">
-									<li><span class="glyphicon glyphicon-ok"></span></li>
-									<li><span class="glyphicon glyphicon-minus"></span></li>
-									<li><span class="glyphicon glyphicon-remove"></span></li>
-								</ul>
-							</div>
-						</div>
-					</div>
+				</example>
 				</div>
 				
 			</div>
@@ -202,12 +159,91 @@
 	</div>
 </div>
 
+<div class="modal fade" id="add-tag" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				添加新的标签
+			</div>
+			<div class="modal-body">
+				<label>标签号</label>
+				<input type="text" class="form-control">
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary">确定</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="add-book" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				分享新的书籍
+			</div>
+			<div class="modal-body">
+				<label>ISBN</label>
+				<input class="form-control" type="text" >
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary">确定</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+result = {
+	data: {
+		tags: [
+			"实验室",
+			"寝室"
+		],
+		books: [{
+				bookName: 'book name',
+				authorName: 'author',
+				bookPress: 'Hust'
+			},{
+				bookName: 'book name 2',
+				authorName: 'author 2',
+				bookPress: 'Hust'
+			},{
+				bookName: 'book name',
+				authorName: 'author',
+				bookPress: 'Hust'
+			},{
+				bookName: 'book name 2',
+				authorName: 'author 2',
+				bookPress: 'Hust'
+			},{
+				bookName: 'book name',
+				authorName: 'author',
+				bookPress: 'Hust'
+			},{
+				bookName: 'book name 2',
+				authorName: 'author 2',
+				bookPress: 'Hust'
+			}
+		]
+	}
+};
+</script>
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script src="bootstrap3/js/bootstrap.js" ></script>
 <script src="js/check-form.js"></script>
+<script src="js/with.js"></script>
 <script>
 $(function(){
+	fillDocument(result);
+	
+	$( '#tags [data-toggle="tab"]' ).on( 'show.bs.tab', function ( e ) {
+		$( e.relatedTarget ).find( 'span' ).remove().appendTo( $( e.target ) );
+	} );
+		
 	$('.thumbnail').hover(function(){
 		$(this).find('.status').slideToggle();
 	});
@@ -221,12 +257,14 @@ $(function(){
 		revert: 'invalid'
 	});
 	
+	
 	$('#trash').droppable({
 		drop: function ( event, ui ) {
 			ui.draggable.remove();
 		},
 		hoverClass: 'btn-danger'
 	});
+	
 });
 </script>
 

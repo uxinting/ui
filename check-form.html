@@ -37,7 +37,7 @@
 		<img src="img/book-logo.png" />
 		<div class="form-group">
 			<label>邮箱</label>
-			<input type="email" class="form-control" placeholder="Enter email" data-check="email"/>
+			<input type="email" class="form-control" placeholder="Enter email" data-check="email" data-with="val:email"/>
 			<p class="help-block"></p>
 		</div>
 		
@@ -55,7 +55,13 @@
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script src="bootstrap3/js/bootstrap.js" ></script>
 <script src="js/check-form.js"></script>
+<script src="js/with.js"></script>
 <script>
+result = {
+	data: {
+		email: 'wuxinting'
+	}
+}
 $(function(){
 	$('form').checkform({
 		error: function (el, msg) {
@@ -69,6 +75,7 @@ $(function(){
 		}
 	});
 })
+dataWith(result);
 </script>
 
 </body>
