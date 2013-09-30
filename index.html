@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>漂流</title>
+	<link rel="stylesheet" href="static/bootstrap3/css/bootstrap.css" />
+	<link rel="stylesheet" href="static/css/book.css" />
+</head>
+<style>
+body {
+	background: #ceab65;
+	//background: #d1a572;
+	overflow: hidden;
+}
+</style>
+<body>
+<canvas id="star" width="1800" height="1000"></canvas>
+
+<div style="width: 100%;position: fixed;top:150px;padding: 50px;font-family:微软雅黑 仿宋;color:#333333;letter-spacing:40px;box-shadow:">
+	<p style="font-size:50px;text-align: center; width: 100%;">
+		<span style="">图书漂流</span>
+	</p>
+	<p style="text-align: center;letter-spacing:4px;font-family:微软雅黑;">
+		<span style="position:relative;left:80px;">让知识不再落单</span>
+	</p>
+</div>
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="static/bootstrap3/js/bootstrap.js" ></script>
+<script>
+
+
+new stars().rain();
+</script>
+</body>
+</html>
