@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>注册</title>
+		<link rel="stylesheet" href="../../book/src/main/webapp/static/bootstrap3/css/bootstrap.css" />
+		<link rel="stylesheet" href="../../book/src/main/webapp/static/css/book.css" />
+		<style>
+		form {
+			width: 300px;
+			margin-left: 50%;
+		}
+		
+		img {
+			position: absolute;
+			right: 50%;
+			top: -50px;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="v-center-bg">
+			<form role="form" action="/register" method="POST">
+				<img src="static/img/register-logo.png" />
+				<div class="form-group">
+					<label>邮箱</label>
+					<input type="email" class="form-control" placeholder="你的邮箱" data-check="email" data-remote="http://localhost:8080/validation" data-with="val: email" name="email"/>
+					<p class="help-block" style="color: #b94a48;" data-with="text: error"></p>
+				</div>
+				
+				<div class="form-group">
+					<label>密码</label>
+					<input type="password" class="form-control" placeholder="密码" name="passwd" data-check="passwd"/>
+					<p class="help-block"></p>
+				</div>
+				
+				<div class="form-group">
+					<label>昵称</label>
+					<input type="text" class="form-control" placeholder="昵称" name="username" data-check="name"/>
+					<p class="help-block"></p>
+				</div>
+				
+				<button type="submit" class="btn btn-default">注册</button>
+				<a type="button" class="btn btn-default" href="/login">
+					登陆&nbsp;<span class="glyphicon glyphicon-arrow-right"></span>
+				</a>
+			</form>
+		</div>
+		
+		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+		<script src="../../book/src/main/webapp/static/bootstrap3/js/bootstrap.js" ></script>
+		<script src="../../book/src/main/webapp/static/js/check-form.js"></script>
+		<script src="../../book/src/main/webapp/static/js/with.js"></script>
+		<script>
+		$(function(){
+			$('form').checkform({
+				error: function (el, msg) {
+					el.parent('div').addClass('has-error');
+					el.next().text( msg );
+				},
+				
+				success: function (el) {
+					el.parent('div').removeClass('has-error');
+					el.next().text('');
+				}
+			});
+		})
+		</script>
+	</body>
+</html>

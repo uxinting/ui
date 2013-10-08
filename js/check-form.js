@@ -8,13 +8,13 @@
 			passwd: /^[\_\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]{8,22}$/,
 			
 			//4-16位由数字、字母、下划线
-			name: /^[a-zA-Z0-9\_]{4,16}$/
+			name: /^[a-zA-Z0-9\_\u3400-\u9FFF]{2,16}$/
 		},
 		
 		msgs: {
 			email: '无效的邮箱名',
 			passwd: '8-22位 字母，下划线，数字，特殊字符',
-			name: '4-16位 由数字、字母、下划线'
+			name: '2-16位 中日韩字 数字、字母、下划线'
 		},
 	
 		init: function ( that, opt ) {
@@ -22,10 +22,9 @@
 			methods.el = that;
 			
 			methods.settings = $.extend( {
-				success: function(el){
-				},
-				error: function(el, msg) {
-				}
+				success: function(el){},
+				error: function(el, msg) {},
+				remote: function ( data, status ) {},
 			}, opt );
 			
 			methods.bind();
@@ -40,8 +39,19 @@
 		
 		check: function (e) {
 			var _type = $(e.target).data('check');
-			if ( typeof _type == 'undefined' ) return;
+			var _href = $( e.target ).data( 'remote' );
 			
+			if ( typeof _href !== 'undefined' ) {
+				var params = {};
+				params[$( e.target ).attr( 'name' )] = $( e.target ).val();
+				
+				$.post( _href, params, function ( data, status) {
+					methods.settings.remote( data, status );
+				} );
+			}
+			
+			if ( typeof _type == 'undefined' ) return;
+			//check with re
 			if ( methods.res[_type].test( $(e.target).val() ) ) {
 				methods.settings.success( $(e.target) );
 			} else {

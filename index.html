@@ -7,18 +7,15 @@
 </head>
 <style>
 body {
-	background: #ceab65;
+	background: url(img/pic247.jpg);
+	//background: #ceab65;
 	//background: #d1a572;
 	overflow: hidden;
 }
 
-p {
-	margin: 0;
-	background: inherit;
-}
-
 #title-contain {
 	width: 100%; 
+	display: block;
 	position: fixed;
 	top:150px;
 	padding: 50px;
@@ -28,59 +25,59 @@ p {
 }
 
 #title {
-	font-size:50px;
+	font-size:80px;
 	text-align: center;
-	line-height: 50px;
-	background: #ceab65;
-}
-
-#title > div {
-	display: inline-block;
-	margin: 0;
-	padding: 0;
-}
-
-#title:hover {
-	transform: translate( 0, -20px );
-	transition: transform 1s;
-}
-
-#act {
-	z-index: -1;
-	width: 300px;
-	text-align: center;
-	letter-spacing: 4px;
-	font-family: 微软雅黑;
-	font-size: 12px;
-	height: 20px;
-	position: relative;
-	bottom: 20px;
-	margin: 0 auto;
-}
-
-#act:hover {
-	z-index: 1;
+	line-height: 80px;
+	text-shadow: 0px 5px 5px #ceab65;
+	//background: #ceab65;
+	transform: matrix(5deg,0,0,0;
 }
 
 #desc {
-	text-align: center;
+	width: 400px;
+	margin: 5px auto;
+	text-align: right;
 	letter-spacing:4px;
 	font-family:微软雅黑;
 }
 
 #desc > span {
-	position:relative;
-	left:80px;
+	float: right;
+}
+
+#ctrl {
+	display: block;
+	width: 400px;
+	margin: 10px auto;
+	letter-spacing: 0;
+	font-family:微软雅黑;
+}
+
+#ctrl a {
+	float: right;
+	width: 150px;
+	color: #336666;
+	border: none;
+	margin-left: 15px;
+}
+
+#ctrl .btn:hover {
+	background: #336666;
+	color: #ffffcc;
+	transition: background 0.5s;
 }
 
 </style>
 <body>
 <div id="title-contain">
 	<div id="title">
-		<div>图书漂流</div>
+		<div><span class="glyphicon glyphicon-book" style="font-size: 14px; line-height: 14px;letter-spacing: 0; position: relative; top: -50px; left: -10px;"></span>图书漂流</div>
 	</div>
-	<div id="desc">
-		<span>让知识不再落单</span>
+	<div id="desc">快捷图书分享&nbsp;&nbsp;让知识不再落单
+	</div>
+	<div id="ctrl">
+		<a class="btn btn-default">登陆</a>
+		<a class="btn btn-default">注册</a>
 	</div>
 </div>
 <!--
