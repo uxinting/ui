@@ -102,6 +102,8 @@
 	.thumbnail {
 		margin-bottom: 10px;
 	}*/
+	
+	
 	</style>
 </head>
 
@@ -138,15 +140,19 @@
 					<div class="col-lg-3">
 						<div href="#" class="thumbnail">
 							<div class="book">
-								<span class="glyphicon glyphicon-ok-sign"></span>
+								<ul class="status">
+									<li title="可借"><span class="glyphicon glyphicon-ok-sign"></span></li>
+									<li title="已借出"><span class="glyphicon glyphicon-minus-sign"></span></li>
+									<li title="不可借"><span class="glyphicon glyphicon-remove-sign"></span></li>
+								</ul>
 								<p class="book-name" data-with="text: bookName"></p>
 								<p class="author-name" data-with="text: authorName"></p>
-								<p class="book-press" data-with="text: bookPress"></p>
+								<p class="book-press" data-with="text: bookPress"></p><!--
 								<ul class="status">
 									<li><span class="glyphicon glyphicon-ok"></span></li>
 									<li><span class="glyphicon glyphicon-minus"></span></li>
 									<li><span class="glyphicon glyphicon-remove"></span></li>
-								</ul>
+								</ul>-->
 							</div>
 						</div>
 					</div>
@@ -245,13 +251,15 @@ $(function(){
 		$( e.relatedTarget ).find( 'span' ).remove().appendTo( $( e.target ) );
 	} );
 		
-	$('.thumbnail').hover(function(){
+	/*$('.thumbnail').hover(function(){
 		$(this).find('.status').slideToggle();
-	});
+	});*/
 	
-	$('.status').find('li').click(function(){
-		var claz = $(this).find('span').attr('class')+'-sign';
-		$(this).parent('ul').siblings('span').attr('class', claz);
+	$('.status').find('>li').click(function(){
+		//var claz = $(this).find('span').attr('class')+'-sign';
+		//$(this).parent('ul').siblings('span').attr('class', claz);
+		var parent = $(this).parent('ul');
+		$(this).insertBefore( parent.children().first() );
 	});
 	
 	$('.nav-pills').find('li').draggable({
