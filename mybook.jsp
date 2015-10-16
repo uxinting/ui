@@ -1,4 +1,5 @@
-<!--<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>-->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,27 +11,34 @@
 <body>
 <nav class="navbar navbar-default" role="navigation">
 	<div class="navbar-header">
-		<a class="navbar-brand" href="/">Book Drift</a>
+		<a class="navbar-brand">Book Drift</a>
 	</div>
 	<ul class="nav navbar-nav">
-		<li><a href="#add-tag" data-toggle="modal" title="添加新的标签"><span class="glyphicon glyphicon-tag"></span></a></li>
-		<li><a href="#add-book" data-toggle="modal" title="分享新的书籍"><span class="glyphicon glyphicon-book"></span></a></li>
+		<li class="active"><a href="/myBook" title="主页"><span class="glyphicon glyphicon-home"></span></a></li>
+		<li></li>
+		<li><a href="/addbook" title="分享新的书籍"><span class="glyphicon glyphicon-book"></span></a></li>
 	</ul>
-	<ul class="nav navbar-nav pull-right" data-with="bool: user">
+	<ul class="nav navbar-nav navbar-right" data-with="bool: user?(fill: user)(remove)">
 		<li><a href="#"><span class="glyphicon glyphicon-envelope"></span><strong class="icon-badge">1</strong></a></li>
-		<li><a href="#" data-with="text: user.userName"></a></li>
+		<li><a href="#" data-with="text: userName"></a></li>
 	</ul>
+	<form class="navbar-form navbar-right" role="search" >
+		<div class="form-group" style="position: relative;width: 400px; max-width: 500px;">
+			<input type="text" class="form-control" >
+			<span id="search" class="glyphicon glyphicon-search" style="position:absolute;line-height: 28px; right: 20px;color:#777777;"></span>
+		</div>
+	</form>
 </nav>
 <div class="row">
 	<div class="col-lg-3">
-		<ul class="nav nav-pills nav-stacked nav-tabs" data-with="list: labels">
-			<li class="active"><a href="#tab_me" data-toggle="tab"><span class="glyphicon glyphicon-hand-right" style="color: black; float: left;"></span>我</a></li>
+		<ul class="nav nav-pills nav-stacked nav-tabs" data-with="list: labels" id="tags">
+			<li class="active"><a href="#tab_me" data-toggle="tab">我</a></li>
 			<example>
-				<li><a href="" data-toggle="tab" data-with="href: '#tab'-id; text: labelName"></a></li>
+				<li><a href="" data-toggle="tab" data-with="href: '#tab'-id; text: labelName"></a><span class="glyphicon glyphicon-remove"></span></li>
 			</example>
 		</ul>
-		<button type="button" class="btn btn-lg" style="margin-top: 20px; width: 100%;" id="trash">
-			<span class="glyphicon glyphicon-trash"></span>
+		<button data-target="#add-tag" type="button" data-toggle="modal" title="添加新的标签" class="btn btn-lg" style="margin-top: 20px; width: 100%;">
+			<span class="glyphicon glyphicon-plus"></span>
 		</button>
 	</div>
 	<div class="col-lg-9">
@@ -39,20 +47,21 @@
 				
 				<div class="row" data-with="list: books">
 					<example>
-						<div class="col-lg-3">
-							<div href="#" class="thumbnail">
-								<div class="book">
-									<span class="glyphicon glyphicon-ok-sign"></span>
-									<p class="book-name" data-with="text: bookName"></p>
-									<p class="author-name" data-with="text: authorName"></p>
-									<p class="book-press" data-with="text: bookPress"></p>
-									<ul class="status">
-										<li><span class="glyphicon glyphicon-ok"></span></li>
-										<li><span class="glyphicon glyphicon-minus"></span></li>
-										<li><span class="glyphicon glyphicon-remove"></span></li>
-									</ul>
+						<div class="col-lg-2">
+							<a href="#" class="thumbnail">
+								<img data-with="src: imageUrl">
+								<ul class="status">
+									<li title="可借"><span class="glyphicon glyphicon-ok-sign"></span></li>
+									<li title="已借出"><span class="glyphicon glyphicon-minus-sign"></span></li>
+									<li title="不可借"><span class="glyphicon glyphicon-remove-sign"></span></li>
+								</ul>
+								<div class="book-summary">
+									<p data-with="text: bookName"></p>
+									<p data-with="text: authorName"></p>
+									<p data-with="text: bookPress"></p>
+									<pre data-with="text: summary"></pre>
 								</div>
-							</div>
+							</a>
 						</div>
 					</example>
 				</div>
@@ -70,17 +79,18 @@
 				添加新的标签
 			</div>
 			<div class="modal-body">
-				<label>标签号</label>
+				<label>标签</label><p></p>
 				<input type="text" class="form-control">
+				<p data-with="text: msg"></p>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-primary">确定</button>
+				<button type="button" class="btn btn-primary" id="submitTag">确定</button>
 			</div>
 		</div>
 	</div>
 </div>
 
-<div class="modal fade" id="add-book" tabindex="-1" role="dialog" aria-hidden="true">
+<!-- <div class="modal fade" id="add-book" tabindex="-1" role="dialog" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -89,53 +99,57 @@
 			</div>
 			<div class="modal-body">
 				<label>ISBN</label>
-				<input class="form-control" type="text" >
+				<p></p>
+				<div class="input-group">
+					<input class="form-control" type="text">
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button" id="searchIsbn">
+							<span class="glyphicon glyphicon-search"></span>
+						</button>
+					</span>
+				</div>
+			
+				<table class="table table-hover" style="display: none;">
+				<tbody>
+					<tr>
+					<td><b>书名</b></td>
+					<td data-with="text: title"></td>
+					</tr>
+					<tr>
+					<td><b>作者</b></td>
+					<td data-with="text: author"></td>
+					</tr>
+					<tr>
+					<td><b>出版社</b></td>
+					<td data-with="text: publisher"></td>
+					</tr>
+				</tbody>
+				</table>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-primary">确定</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal" id="submitBook">完成</button>
+				<a type="button" class="btn btn-info" href="/addbook">高级>></a>
 			</div>
 		</div>
 	</div>
+</div> -->
+
+<div id="message">
+	<div class="msg-pane">
+	</div>
+	<div class="input-inset">
+		<span id="msg-close" class="glyphicon glyphicon-remove" style="position: absolute;top: 0;left:15px;"></span>
+		<input class="form-control" type="text">
+		<span id="msg-send" class="glyphicon glyphicon-send" style="position: absolute;top: 0;right:15px;"></span>
+	</div>
 </div>
 
-<script>
-result = {data:{name:'wu'}};
-document.getElementsByTagName( 'body' )[0].style.display = 'none';
-</script>
-<!--<%@ include file="patch/result.jsp" %>-->
+<%@ include file="patch/result.jsp" %>
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<!-- <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> -->
 <script src="static/bootstrap3/js/bootstrap.js" ></script>
 <script src="static/js/with.js"></script>
-<script>
-$(function(){
-	$( '#tags [data-toggle="tab"]' ).on( 'show.bs.tab', function ( e ) {
-		$( e.relatedTarget ).find( 'span' ).remove().appendTo( $( e.target ) );
-	} );
-	$('.thumbnail').hover(function(){
-		$(this).find('.status').slideToggle();
-	});
-	
-	$('.status').find('li').click(function(){
-		var claz = $(this).find('span').attr('class')+'-sign';
-		$(this).parent('ul').siblings('span').attr('class', claz);
-	});
-	
-	$('.nav-pills').find('li').draggable({
-		revert: 'invalid'
-	});/*each( function() {
-		$( this ).draggable({
-			revert: 'invalid'
-		});
-	})*/
-	
-	$('#trash').droppable({
-		drop: function ( event, ui ) {
-			ui.draggable.remove();
-		},
-		hoverClass: 'btn-danger'
-	});
-});
-</script>
+<script src="static/js/douban.js"></script>
+<script src="static/js/mybook.js"></script>
 </body>
 </html>

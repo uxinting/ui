@@ -3,16 +3,167 @@
 	<head>
 	
 	<link rel="stylesheet" href="./bootstrap3/css/bootstrap.min.css">
+	<style>
+	#message {
+		display: none;
+		position: fixed;
+		bottom: 50px;
+		left: 30%;
+		width: 30%;
+	}
+	
+	.msg-pane {
+		max-height: 150px;
+		width: 100%;
+		opacity: 0.7;
+		padding: 10px 4px;
+		overflow: auto;
+	}
+	
+	.input-inset {
+		position: relative;
+	}
+	.input-inset>input {
+		text-indent: 20px;
+	}
+	.input-inset .glyphicon {
+		line-height: 34px;
+	}
+	.input-inset .glyphicon:hover {
+		cursor: pointer;
+	}
+	body {
+		overflow: hidden;
+	}
+	#content {
+		width: 100%;
+		min-height: 1px;
+		overflow: auto;
+	}
+	#mybook {
+		width: 85%;
+		min-height: 100px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 3;
+		transition: width 0.5s;
+		background: #ffffee;
+		overflow-x: hidden;
+	}
+	#mybook-c {
+		width: 800px;
+		margin: 0 auto;
+	}
+	#bookpatch {
+		width: 15%;
+		height: 1000px;
+		background: #ddffdd;
+		position: fixed;
+		top: 0;
+		right: 0;
+		z-index: 4;
+		transition: right 0.5s, background 0.5s;
+	}
+	#addbook {
+		width: 85%;
+		min-height: 100px;
+		z-index: 2;
+		position: absolute;
+		top: 0;
+		right: 0;
+		background: #eeffee;
+	}
+	#addbook-c {
+		width: 800px;
+		margin: auto;
+	}
+	</style>
 	</head>
 	<body>
-	
-	
+		<!--
+		<div id="message">
+			<div class="msg-pane">
+			</div>
+			<div class="input-inset">
+				<span id="msg-close" class="glyphicon glyphicon-remove" style="position: absolute;top: 0;left:15px;"></span>
+				<input class="form-control" type="text">
+				<span id="msg-send" class="glyphicon glyphicon-send" style="position: absolute;top: 0;right:15px;"></span>
+			</div>
+		</div>-->
+			<div id="mybook">
+			<div id="mybook-c">
+				<input type="text" class="form-control">
+				<p>这个星期在做一些调查，在网上查找资料的时候发现几个网站都出现了可怕的错误空白页面，于是决定整理一份404错误页面与大家分享。花时间去认真设计一个错误页面是一件非常好的事情，尽管知道这个页面被看到的概率很小，至少不应该被看到，然而我们的网站有时候难免出现错误，对于那些极少数时候出现的错误情况，更好的做法让用户看到一个新颖的错误页面</p>
+			</div>
+			</div>
+			<div id="bookpatch">
+				<button type="button" class="btn btn-default" id="triger" data-for="addbook">add book</button>
+			</div>
+			<div id="addbook">
+			<div id="addbook-c">
+				<input type="text" class="form-control">
+				<p>行为模式的数目的上限是有前途的上下文的数量呈线性关系。</p>
+			</div>
+			</div>
+		
 		<script src="./js/jquery-1.9.1.js"></script>
 		<script src="./bootstrap3/js/bootstrap.js"></script>
 		<script>
-		$.get( 'mybook.jsp', function ( data, status ) {
+		$('#mybook-c').css('margin-left',($('#mybook').width()-800)/2+'px');
+		$('#addbook-c').css('margin-right', ($('#addbook').width()-800)/2+'px');
+		$('button').click(function(){
+			var f = $(this).data('for');
+			if ( f == 'addbook' ) {
+				$('#mybook').css('width', '0');
+				$('#bookpatch').css({'right': '85%','background': '#ffffdd'});
+				setTimeout(function(){
+					$('button').text('my book').data('for', 'mybook');
+				}, 500);
+			} else {
+				$('#mybook').css('width', '85%');
+				$('#bookpatch').css({'right': '0','background': '#ddffdd'});
+				setTimeout(function(){
+					$('button').text('add book').data('for', 'addbook');
+				},500);
+			}
+		});
+		/*$.get( 'mybook.jsp', function ( data, status ) {
 			alert( data );
 		});
+		$( document ).keypress( function ( e ) {
+			if ( e.keyCode == 13 ) { //enter
+				if ( $( '#message' ).css( 'display' ) == 'none' ) {
+					$( '#message' ).show().find( 'input' ).val('').focus();
+				} else {
+					var msg = $('#message input').val();
+					if ( msg == '' ) {
+						$('#message input').focus();
+						return;
+					}
+					var node = '<p class="me"><b>me:&nbsp;&nbsp;</b><span>'+msg+'</span><span style="float: right;">'+new Date().toLocaleTimeString()+'</span></p>';
+					$( '#message .msg-pane' ).append( node );
+					$('#message input').val('');
+				}
+			}
+			
+			if ( e.keyCode == 27 ) { //esc
+				$( '#message' ).hide();
+			}
+		} );
+		$( '#msg-close' ).click(function(){
+			$( '#message' ).hide();
+		});
+		$( '#msg-send' ).click(function(){
+			var msg = $('#message input').val();
+			if ( msg == '' ) {
+				$('#message input').focus();
+				return;
+			}
+			var node = '<p class="me"><b>me:&nbsp;&nbsp;</b><span>'+msg+'</span><span style="float: right;">'+new Date().toLocaleTimeString()+'</span></p>';
+			$( '#message .msg-pane' ).append( node );
+			$('#message input').val('');
+		});*/
 		</script>
 	</body>
 </html>
